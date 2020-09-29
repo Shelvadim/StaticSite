@@ -1,0 +1,51 @@
+﻿@page "/TConverter"
+
+<h1>Temperature Converter</h1>
+
+<label>Fahrenheit</label>
+<input type="number" @bind="Fahrenheit" />
+
+<span> = </span>
+
+<input type="number" @bind="Celsius" />
+<label>Celsius</label>
+
+<p>Formula: @celsius C=(@fahrenheit F - 32) * 5 / 9</p>
+
+@*<p>The value of celsius is: @celsius</p>
+
+
+ <button class="btn btn-primary" @onclick="ConvertValue">Convert</button>*@
+
+
+@code {
+    //private int currentCount = 0;
+    private double fahrenheit = 32;
+    private double celsius = 0;
+
+
+    //private void ConvertValue()
+    //{
+    //    celsius = (fahrenheit - 32) * 5 / 9;
+    //}
+
+    public double Fahrenheit
+    {
+        get => fahrenheit;
+        set
+        {
+            celsius = (value - 32) * 5 / 9;
+            fahrenheit = value;
+        }
+    }
+
+    public double Celsius
+    {
+        get => celsius;
+        set
+        {
+            fahrenheit = (value * 9 / 5) + 32;
+            celsius = value;
+        }
+    }
+}
